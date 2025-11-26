@@ -1,0 +1,18 @@
+[
+  {
+    "id": "evt-2025-001",
+    "title": "Community Clean-Up",
+    "date": "2025-10-20",
+    "location": "Kolhapur Park",
+    "img": "/api/members/events/community-cleanup.jpg",
+    "desc": "Join us to clean and beautify the local park."
+  },
+  {
+    "id": "evt-2025-002",
+    "title": "Tree Plantation Drive",
+    "date": "2025-11-05",
+    "location": "River Bank",
+    "img": "/api/members/events/tree-plantation.jpg",
+    "desc": "Planting trees for a greener tomorrow."
+  }
+]

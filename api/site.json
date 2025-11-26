@@ -1,0 +1,38 @@
+{
+  "contact": {
+    "address": "Rajaram College Campus, Kolhapur, Maharashtra 416004",
+    "presidentName": "Itr. Khushi Gaikwad",
+    "presidentEmail": "khushi@interactkolhapur.org",
+    "secretaryName": "Itr. Diyaan Oswal",
+    "secretaryEmail": "diyaan@interactkolhapur.org",
+    "mainEmail": "info@interactkolhapur.org"
+  },
+  "stats": {
+    "members": 186,
+    "eventsThisYear": 5,
+    "serviceHours": 420,
+    "collaborations": 7
+  },
+  "board": [
+    {
+      "name": "Itr. Khushi Gaikwad",
+      "role": "President",
+      "email": "khushi@interactkolhapur.org",
+      "vision": "To lead with empathy and inspire every member to serve selflessly for a better tomorrow.",
+      "image": "/api/members/khushi.jpg"
+    }
+  ],
+  "events": [
+    {
+      "title": "Community Clean-Up",
+      "date": "2025-10-20",
+      "location": "Kolhapur Park",
+      "img": "/api/members/events/community-cleanup.jpg",
+      "desc": "Join us to clean and beautify the local park."
+    }
+  ],
+  "gallery": [
+    "/api/gallery/img01.jpg",
+    "/api/gallery/img02.jpg"
+  ]
+}

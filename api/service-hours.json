@@ -1,0 +1,18 @@
+{
+  "year": 2025,
+  "totalHours": 420,
+  "monthly": {
+    "Jan": 20,
+    "Feb": 30,
+    "Mar": 32,
+    "Apr": 28,
+    "May": 40,
+    "Jun": 38,
+    "Jul": 42,
+    "Aug": 36,
+    "Sep": 40,
+    "Oct": 34,
+    "Nov": 40,
+    "Dec": 40
+  }
+}

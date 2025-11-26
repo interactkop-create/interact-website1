@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Itr. Khushi Gaikwad",
+    "role": "President",
+    "email": "khushi@interactkolhapur.org",
+    "vision": "To lead with empathy and inspire every member to serve selflessly for a better tomorrow.",
+    "image": "/api/members/khushi.jpg"
+  },
+  {
+    "name": "Itr. Diyaan Oswal",
+    "role": "Secretary",
+    "email": "diyaan@interactkolhapur.org",
+    "vision": "Efficient coordination and transparent communication are the backbone of a strong club.",
+    "image": "/api/members/diyaan.jpg"
+  }
+]
