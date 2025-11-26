@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+
+<title>Interact Club — Kolhapur</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* Base */
+* { margin:0; padding:0; box-sizing:border-box; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+body { background:#fff; color:#1e1e1e; line-height:1.5; scroll-behavior:smooth; overflow-x:hidden; }
+a { text-decoration:none; color:inherit; }
+img { display:block; max-width:100%; border-radius:8px; height:auto; }
+h1,h2,h3 { color:#0a3d91; font-weight:700; }
+
+/* Navbar */
+nav { position:fixed; top:0; left:0; right:0; background:rgba(255,255,255,0.95); backdrop-filter:blur(8px); box-shadow:0 2px 12px rgba(0,0,0,0.08); z-index:1000; }
+nav .container { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; padding:0.75rem 1rem; flex-wrap:wrap; }
+nav .logo { display:flex; align-items:center; gap:0.5rem; }
+nav .logo .icon { background:#0a3d91; color:#fff; width:36px; height:36px; display:flex; align-items:center; justify-content:center; font-weight:bold; border-radius:8px; }
+nav .menu { display:flex; gap:1.5rem; font-size:0.9rem; color:#555; flex-wrap:wrap; }
+nav .menu a:hover { color:#0e6ec3; }
+nav .actions button { padding:0.5rem 1rem; border-radius:6px; border:none; cursor:pointer; background:#0e6ec3; color:#fff; font-size:0.9rem; transition:0.3s; }
+nav .actions button:hover { background:#0a5ba3; }
+
+/* Hero */
+header { min-height:80vh; display:flex; align-items:center; background:#f9f9f9; padding-top:4rem; position:relative; overflow:hidden; }
+header::before { content:""; position:absolute; top:0; left:0; width:100%; height:100%; background:url('https://images.unsplash.com/photo-1524179091875-bf99a9a6af57?auto=format&fit=crop&w=1600&q=60') center/cover no-repeat; opacity:0.1; z-index:0; }
+.hero-container { max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; gap:2rem; align-items:center; justify-content:space-between; padding:0 1rem; position:relative; z-index:1; }
+.hero-text h1 { font-size:3rem; font-weight:800; }
+.hero-text h1 span { color:#0e6ec3; }
+.hero-text p { margin-top:1rem; font-size:1.1rem; color:#555; }
+.hero-buttons { margin-top:1.5rem; display:flex; gap:1rem; flex-wrap:wrap; }
+.hero-buttons a { padding:0.75rem 1.5rem; border-radius:8px; font-weight:600; transition:all 0.3s; }
+.hero-buttons a.primary { background:#0e6ec3; color:#fff; }
+.hero-buttons a.primary:hover { background:#0a5ba3; }
+.hero-buttons a.secondary { border:1px solid #ccc; color:#555; }
+.hero-buttons a.secondary:hover { background:#f5f5f5; }
+
+.hero-stats { background:rgba(14,110,195,0.05); padding:1.5rem; border-radius:12px; flex:1 1 250px; display:flex; flex-direction:column; gap:1rem; }
+.hero-stats .stat { display:flex; justify-content:space-between; }
+.hero-stats .stat .label { font-size:0.85rem; color:#555; }
+.hero-stats .stat .value { font-weight:700; font-size:1.3rem; color:#0a3d91; }
+.hero-stats-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:0.5rem; }
+.hero-stats-grid .card { background:white; padding:0.75rem; border-radius:8px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.06); }
+.hero-stats-grid .card .label { font-size:0.75rem; color:#555; }
+.hero-stats-grid .card .value { font-weight:700; font-size:1.2rem; color:#0a3d91; }
+
+/* Sections */
+section { max-width:1200px; margin:4rem auto; padding:0 1rem; }
+section h2 { font-size:2rem; font-weight:700; margin-bottom:2rem; text-align:center; }
+
+/* Directors */
+.directors-grid { display:grid; grid-template-columns:1fr; gap:1rem; }
+@media(min-width:640px){ .directors-grid { grid-template-columns:repeat(2,1fr); } }
+@media(min-width:1024px){ .directors-grid { grid-template-columns:repeat(4,1fr); } }
+.member { background:white; padding:0.75rem; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08); text-align:center; transition:transform 0.3s, box-shadow 0.3s; cursor:pointer; }
+.member:hover { transform:translateY(-4px); box-shadow:0 8px 20px rgba(0,0,0,0.12); }
+.member img { width:100%; height:auto; object-fit:cover; border-radius:12px; }
+.member h3 { margin-top:0.5rem; font-size:1rem; font-weight:600; }
+.member p { font-size:0.75rem; color:#555; margin-top:0.25rem; }
+
+/* Events */
+.events-grid { display:grid; grid-template-columns:1fr; gap:1rem; }
+@media(min-width:640px){ .events-grid { grid-template-columns:repeat(2,1fr); } }
+@media(min-width:1024px){ .events-grid { grid-template-columns:repeat(3,1fr); } }
+.event-card { background:white; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.06); transition:transform 0.3s; }
+.event-card:hover { transform:translateY(-4px); }
+.event-card img { width:100%; height:auto; object-fit:cover; }
+.event-card .event-content { padding:1rem; }
+.event-card .event-title { font-weight:700; margin-bottom:0.25rem; color:#0a3d91; }
+.event-card .event-meta { font-size:0.75rem; color:#555; margin-bottom:0.5rem; display:flex; justify-content:space-between; }
+
+/* Gallery */
+.gallery-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:0.5rem; }
+@media(min-width:640px){ .gallery-grid { grid-template-columns:repeat(3,1fr); } }
+@media(min-width:1024px){ .gallery-grid { grid-template-columns:repeat(4,1fr); } }
+.gallery-grid img { cursor:pointer; transition:transform 0.3s; }
+.gallery-grid img:hover { transform:scale(1.05); }
+
+/* Lightbox */
+#lightbox { position:fixed; display:none; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:2000; }
+#lightbox img { max-width:90%; max-height:90%; border-radius:12px; }
+
+/* Contact */
+#contact .contact-form { display:flex; flex-direction:column; gap:1rem; }
+#contact input, #contact textarea { padding:0.75rem; border-radius:8px; border:1px solid #ccc; width:100%; }
+#contact button { padding:0.75rem 1.5rem; border-radius:8px; border:none; background:#0e6ec3; color:#fff; font-weight:600; cursor:pointer; transition:0.3s; }
+#contact button:hover { background:#0a5ba3; }
+
+/* Responsive Tweaks */
+@media (max-width:768px) {
+  nav .menu { width:100%; justify-content:center; margin-top:0.5rem; }
+  .hero-text h1 { font-size:2rem; text-align:center; }
+  .hero-text p { text-align:center; font-size:1rem; }
+  .hero-buttons { justify-content:center; }
+  header { text-align:center; }
+}
+@media (max-width:480px) {
+  .hero-text h1 { font-size:1.6rem; }
+  .member img { height:120px; }
+  .event-card .event-meta { flex-direction:column; align-items:flex-start; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav>
+  <div class="container">
+    <div class="logo">
+      <div class="icon">IC</div>
+      <div>
+        <div style="font-weight:bold;font-size:0.9rem;">Interact Club</div>
+        <div style="font-size:0.7rem;color:#555;">Kolhapur</div>
+      </div>
+    </div>
+    <div class="menu">
+      <a href="#about">About</a>
+      <a href="#directors">Board</a>
+      <a href="#events">Events</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="actions">
+      <button onclick="alert('Demo login')">Login</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header>
+  <div class="hero-container">
+    <div class="hero-text">
+      <h1>Interact Club Of <span>Kolhapur</span></h1>
+      <p>Empowering youth. Serving communities. Building leaders.</p>
+      <div class="hero-buttons">
+        <a href="#directors" class="primary">Meet the Board</a>
+        <a href="#events" class="secondary">Upcoming Events</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="label">Active Members</div><div class="value" data-target="186">0</div></div>
+      <div class="stat"><div class="label">This Year</div><div class="value" data-target="2025">0</div></div>
+      <div class="hero-stats-grid">
+        <div class="card"><div class="label">Events This Year</div><div class="value" data-target="5">0</div></div>
+        <div class="card"><div class="label">Total Events</div><div class="value" data-target="23">0</div></div>
+        <div class="card"><div class="label">Service Hours</div><div class="value" data-target="420">0</div></div>
+        <div class="card"><div class="label">Collaborations</div><div class="value" data-target="7">0</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- About -->
+<section id="about">
+  <h2>About Us</h2>
+  <div class="content">
+    <p>The Interact Club of Kolhapur is a youth-led organisation focused on service, leadership, and community building. We empower young people to make a positive impact in the community and connect globally.</p>
+  </div>
+</section>
+
+<!-- Directors -->
+<section id="directors">
+  <h2>Board of Directors</h2>
+  <div class="directors-grid">
+    <div class="member"><img src="interact.jpg" alt="Itr. Khushi Gaikwad"><h3>Itr. Khushi Gaikwad</h3><p>President</p></div>
+    <div class="member"><img src="interact.jpg" alt="Itr. Diyaan Oswal"><h3>Itr. Diyaan Oswal</h3><p>Secretary</p></div>
+    <div class="member"><img src="interact.jpg" alt="Itr. Soham Nagdev"><h3>Itr. Soham Nagdev</h3><p>Vice President</p></div>
+    <div class="member"><img src="interact.jpg" alt="Itr. Kiara Patil"><h3>Itr. Kiara Patil</h3><p>Joint Secretary</p></div>
+    <div class="member"><img src="interact.jpg" alt="Itr. Raghav Patil"><h3>Itr. Raghav Patil</h3><p>Treasurer</p></div>
+    <div class="member"><img src="interact.jpg" alt="Itr. Aarnav Lad"><h3>Itr. Aarnav Lad</h3><p>Immediate Past President</p></div>
+    <div class="member"><img src="interact.jpg" alt="Itr. Rajvardhan Pise"><h3>Itr. Rajvardhan Pise</h3><p>Sergeant-at-Arms</p></div>
+    <div class="member"><img src="interact.jpg" alt="Itr. Yuti Patel"><h3>Itr. Yuti Patel</h3><p>Public Relations Director</p></div>
+    <div class="member"><img src="interact.jpg" alt="Itr. Om Dembani"><h3>Itr. Om Dembani</h3><p>Club Service Director</p></div>
+    <div class="member"><img src="interact.jpg" alt="Itr. Devanshi Edate"><h3>Itr. Devanshi Edate</h3><p>Community Service Director</p></div>
+    <div class="member"><img src="interact.jpg" alt="Itr. Om Malani"><h3>Itr. Om Malani</h3><p>International Service Director</p></div>
+    <div class="member"><img src="interact.jpg" alt="Itr. Aarush Gaikwad"><h3>Itr. Aarush Gaikwad</h3><p>Professional Service Director</p></div>
+    <div class="member"><img src="interact.jpg" alt="Itr. Pearl Rohida"><h3>Itr. Pearl Rohida</h3><p>Interact-Rotary Coordinator</p></div>
+  </div>
+</section>
+
+<!-- Events -->
+<section id="events">
+  <h2>Upcoming Events</h2>
+  <div class="events-grid" id="eventsGrid"></div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery">
+  <h2>Gallery</h2>
+  <div class="gallery-grid">
+    <img src="https://images.unsplash.com/photo-1524179091875-bf99a9a6af57?auto=format&fit=crop&w=800&q=60" alt="">
+    <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=60" alt="">
+    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=60" alt="">
+    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=60" alt="">
+  </div>
+</section>
+
+<div id="lightbox"><img src="" alt=""></div>
+
+<!-- Contact -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <div class="content">
+    <form class="contact-form" onsubmit="alert('Message sent!'); return false;">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<script>
+const stats = document.querySelectorAll('.hero-stats .value');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      stats.forEach(stat=>{
+        const target = +stat.dataset.target;
+        let count = 0;
+        const step = Math.ceil(target/100);
+        const interval = setInterval(()=>{
+          count+=step;
+          if(count>=target){ stat.textContent = target; clearInterval(interval); }
+          else stat.textContent=count;
+        },15);
+      });
+      observer.disconnect();
+    }
+  });
+},{threshold:0.5});
+observer.observe(document.querySelector('.hero-stats'));
+
+const events = [
+  {title:"Community Clean-Up", date:"Oct 20, 2025", location:"Kolhapur Park", image:"https://images.unsplash.com/photo-1524179091875-bf99a9a6af57?auto=format&fit=crop&w=800&q=60", description:"Join us to clean and beautify the local park."},
+  {title:"Tree Plantation Drive", date:"Nov 5, 2025", location:"River Bank", image:"https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=60", description:"Planting trees for a greener tomorrow."},
+  {title:"Fundraiser Charity Event", date:"Dec 10, 2025", location:"City Hall", image:"https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=60", description:"Raising funds for local causes."}
+];
+const eventsGrid = document.getElementById('eventsGrid');
+events.forEach(ev=>{
+  const div=document.createElement('div');
+  div.className="event-card";
+  div.innerHTML=`<img src="${ev.image}" alt="${ev.title}"><div class="event-content"><div class="event-title">${ev.title}</div><div class="event-meta"><span>${ev.date}</span><span>${ev.location}</span></div><p>${ev.description}</p></div>`;
+  eventsGrid.appendChild(div);
+});
+
+const galleryImages = document.querySelectorAll('.gallery-grid img');
+const lightbox = document.getElementById('lightbox');
+const lbImg = lightbox.querySelector('img');
+galleryImages.forEach(img=>img.addEventListener('click',()=>{lbImg.src=img.src; lightbox.style.display='flex';}));
+lightbox.addEventListener('click',()=>{lightbox.style.display='none';});
+</script>
+
+</body>
+</html>
